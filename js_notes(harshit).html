@@ -1,0 +1,166 @@
+<h3>for check an element is present in an array in js---<h4>use arrname.includes(element)</h4></h3>
+<p><h1>New keyword</h1>The new keyword in JavaScript is used to create an instance of an object from a constructor function or class. Here's a comprehensive explanation:
+
+Basic Usage
+
+```javascript
+// Constructor function
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+// Creating an instance with 'new'
+const person1 = new Person('John', 30);
+console.log(person1.name); // 'John'
+```
+
+What new Actually Does
+
+When you use new with a function, it:
+
+1. Creates a new empty object: {}
+2. Sets the prototype: Links the new object to the constructor's prototype
+3. Binds this: Makes this point to the new object
+4. Executes the constructor function
+5. Returns the new object (unless the constructor returns its own object)
+
+Example Breakdown
+
+```javascript
+function Car(make, model) {
+    // Under the hood with 'new':
+    // this = {} (implicitly created)
+    
+    this.make = make;
+    this.model = model;
+    this.year = 2023;
+    
+    // Under the hood:
+    // return this (implicitly returned)
+}
+
+const myCar = new Car('Toyota', 'Camry');
+```
+
+With ES6 Classes
+
+```javascript
+class Animal {
+    constructor(name, species) {
+        this.name = name;
+        this.species = species;
+    }
+    
+    speak() {
+        console.log(`${this.name} makes a sound`);
+    }
+}
+
+const dog = new Animal('Rex', 'Dog');
+dog.speak(); // 'Rex makes a sound'
+```
+
+Common Use Cases
+
+1. Creating multiple similar objects:
+
+```javascript
+function Product(name, price) {
+    this.name = name;
+    this.price = price;
+    this.discount = 0;
+}
+
+const product1 = new Product('Laptop', 1000);
+const product2 = new Product('Phone', 500);
+```
+
+1. Built-in constructors:
+
+```javascript
+const date = new Date();
+const array = new Array(1, 2, 3);
+const obj = new Object();
+const regex = new RegExp('ab+c');
+```
+
+What Happens Without new
+
+```javascript
+function Person(name) {
+    this.name = name;
+}
+
+// Without 'new' - BAD! (in non-strict mode)
+const p = Person('John'); 
+console.log(p); // undefined
+console.log(window.name); // 'John' (pollutes global scope)
+```
+
+Safety Pattern
+
+```javascript
+function Person(name) {
+    if (!(this instanceof Person)) {
+        return new Person(name); // Handle calls without 'new'
+    }
+    this.name = name;
+}
+
+// Both work:
+const p1 = new Person('Alice');
+const p2 = Person('Bob'); // Still works
+```
+
+Key Points to Remember
+
+· Always use new with constructor functions (unless using the safety pattern)
+· Arrow functions cannot be used as constructors with new
+· Modern practice favors ES6 classes over traditional constructor functions
+· The new operator returns the newly created object (unless the constructor returns an object)
+
+Best Practices Today
+
+```javascript
+// Prefer ES6 classes
+class User {
+    constructor(name, email) {
+        this.name = name;
+        this.email = email;
+    }
+    
+    greet() {
+        console.log(`Hello, ${this.name}!`);
+    }
+}
+
+const user = new User('Alice', 'alice@example.com');</p>
+<h1>PROMISES</h1>
+promisename.then(
+    <!--jab promise resolve hoga jab hme yha kuch na krvana ho tb null likh skte hai simply-->
+    (resolve)=>{
+        console.log("promise resolved..");
+    }
+    <!--jab promise reject hoga-->
+    (error)=>{
+        console.log(error)
+    }
+    
+)
+<h3>agar ek hi code me kuch synchronous kaam likha hua hai (line by line kaam hoga time ki vajah se rukega nhi) aur 
+kuch asynchronous kaam bhi diya hai to phle sara  synchronous kaam hoga asynchronous vala ruk jayega ("""asynchronous 
+ka mtlb hi hai ki agar time lag rha to vo browser ke dwara microtask queue ya callback queue me store ho jayega""")<br></h3>
+
+*  Promises microtask queue me store hoti hai aur setTimeOut jaise functions callback queue me store hote hai.
+*  Promises ko browser hi absorb krta hai.
+*  Microtask queue ki priority jyada hoti hai compare to callback queue isliye phle microtask vala chlta hai.
+<!--Promise Example-->
+<h4>Promises Example</h4>
+<h5>new Promise(resolve,reject)=>{</h5>
+    <h5>if (condition){</h5>
+        <h5>resolve(value)</h5>
+        <h5>}</h5>
+<h5>}</h5>
+<!--if else se resolve reject bhi kar skte hai aur then catch ka bhi use kar skte hai-->
+
