@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+        }
+        .box{
+            width: 400px;
+            height:400px;
+            margin: 10px;
+            padding: 10px;
+            border: 5px solid rgb(129, 206, 231);
+            border-radius:5px;
+            background-color: rgb(192, 234, 248);
+            justify-content: center;
+
+        }
+        button {
+            padding: 8px;
+            cursor: pointer;
+        }
+        ul {
+           list-style: none;
+           padding: 0;
+           margin-top: 15px;
+        }
+        .dlt{
+            background-color: red;
+            color: aliceblue;
+        }
+        li {
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+           background: #eee;
+           padding: 8px;
+           margin-bottom: 8px;
+           border-radius: 4px;
+        }
+        input {
+            flex: 1;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>To Do List</h1>
+            <div class="input-box">
+                <input type="text" id="taskInput" placeholder="Enter task">
+                <button onclick="Addtask()">Add</button>
+            </div>
+        </div>
+        <ul id="mainbox"></ul>
+    </div>
+    <script>
+        function Addtask(){
+            const input = document.getElementById("taskInput");
+            const tasktext = input.value;
+            if (tasktext === "") {
+                alert("Please enter a task");
+                return;
+            }
+            const li= document.createElement("li");
+
+            const span= document.createElement("span");
+            span.innerText=tasktext;
+            
+            const deletebutton= document.createElement("button");
+            deletebutton.innerText="X";
+            deletebutton.className="dlt";
+            deletebutton.onclick = function(){
+                li.remove();
+            }
+
+            li.appendChild(span);
+            li.appendChild(deletebutton);
+            document.getElementById("mainbox").appendChild(li);
+            input.value="";
+        }
+    </script>
+
+</body>
+</html>
