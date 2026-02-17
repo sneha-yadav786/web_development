@@ -1,5 +1,3 @@
-const { createElement } = require("react");
-
 const questions = [
         {
             question: "What does HTML stand for?",
@@ -34,14 +32,13 @@ function loadquestion(){
     scoreEl.innerHTML='';
     
     const q= questions[currentquestion];
-    question.innerText=q[question];
+    questionEl.innerText=q.question;
     q.options.forEach((option,index)=>{
         const div=createElement('div');
         div.innerText=option;
         div.classList.add("option");
-        div.onclick=()=>{
-            checkanswer();
-        }
+        div.onclick=()=>checkanswer(index);
+        
         optionEl.appendChild(div);
 
     });
@@ -64,11 +61,11 @@ function checkanswer(ans){
 }
 function showresult(){
     questionEl.innerText = "Quiz Completed 🎉";
-        optionsEl.innerHTML = "";
+        optionEl.innerHTML = "";
         nextBtn.style.display = "none";
-        scoreEl.innerText = `Your Score: ${score} / ${questions.length}`;
+        scoreEl.innerText = `Your Score: ${totalscore} / ${questions.length}`;
     
 }
-nextBtn.onclick()=loadquestion;
+nextBtn.onclick=loadquestion;
 loadquestion();
  
