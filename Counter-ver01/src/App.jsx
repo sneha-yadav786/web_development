@@ -8,7 +8,7 @@ function Count(){
     
     return (
         <>
-          <h2>{count}</h2>
+          <h2 style={{color: count<5 ? "red" : "black"}}>{count}</h2>
           <Increament setcount={setcount}></Increament>
           <Decreament setcount={setcount}></Decreament>
           <Reset setcount={setcount}></Reset>
