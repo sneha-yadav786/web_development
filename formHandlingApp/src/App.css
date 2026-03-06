@@ -1,0 +1,17 @@
+.Namebox{
+  margin: 0px;
+  background-color:gainsboro;
+  color: black;
+  height: 100px;
+  padding: 7px;
+}
+.mailbox{
+  margin: 0px;
+  background-color:gainsboro;
+  color: black;
+  height: 50px;
+  padding: 7px;
+}
+#Button{
+  margin: 5px;
+}
